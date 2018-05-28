@@ -1,2 +1,3 @@
 geth_version: geth-linux-amd64-1.8.8-2688dab4
 geth_url: https://gethstore.blob.core.windows.net/builds/{{ geth_version }}.tar.gz
+geth_path: /usr/local/bin/geth

@@ -7,17 +7,12 @@
     name: "{{ geth_user }}"
     group: "{{ geth_group }}"
 
-- name: Check if geth downloaded
-  stat:
-    path: /tmp/{{ geth_version }}/
-  register: geth_downloaded
-
 - name: Download geth ({{ geth_version }})
   unarchive:
     src: "{{ geth_url }}"
     dest: /tmp/
     remote_src: yes
-  when: geth_downloaded.stat.exists == False
+    creates: /tmp/{{ geth_version }}/geth
 
 - name: Copy geth to /usr/local/bin
   copy:
@@ -25,3 +20,9 @@
     dest: "{{ geth_path }}"
     remote_src: yes
     mode: 0777
+
+- name: Create geth service file
+  template:
+    src: geth.service
+    dest: /etc/systemd/system/geth.service
+    mode: 0644

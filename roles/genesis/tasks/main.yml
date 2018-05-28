@@ -9,12 +9,6 @@
     owner: geth
     mode: 0644
 
-- name: Copy genesis service
-  template:
-    src: geth.service
-    dest: /etc/systemd/system/geth.service
-    mode: 0644
-
 - block:
   - name: Check if account password file has been created
     stat:
