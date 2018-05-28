@@ -1,12 +1,12 @@
 {
     "config": {
-        "chainId": 0,
+        "chainId": {{ networkid }},
         "homesteadBlock": 0,
         "eip155Block": 0,
         "eip158Block": 0
     },
     "alloc": {
-        "0x7c2F02727e61Fb07b26c7A20cef1fdF00DBe8a47": {"balance": "100000"}
+        "7c2F02727e61Fb07b26c7A20cef1fdF00DBe8a47": {"balance": "10000000000000000000000"}
     },
     "coinbase": "0x0000000000000000000000000000000000000000",
     "difficulty": "0x20000",
