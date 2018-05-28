@@ -1,0 +1,5 @@
+---
+geth_user: geth
+geth_group: geth
+networkid: 1337
+geth_path: /usr/local/bin/geth

@@ -1,0 +1,5 @@
+- hosts: genesis
+  roles:
+    - common
+    - genesis
+  remote_user: root

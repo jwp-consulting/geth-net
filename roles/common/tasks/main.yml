@@ -1,0 +1,27 @@
+- name: Add geth group
+  group:
+    name: "{{ geth_group }}"
+
+- name: Add geth user
+  user:
+    name: "{{ geth_user }}"
+    group: "{{ geth_group }}"
+
+- name: Check if geth downloaded
+  stat:
+    path: /tmp/{{ geth_version }}/
+  register: geth_downloaded
+
+- name: Download geth ({{ geth_version }})
+  unarchive:
+    src: "{{ geth_url }}"
+    dest: /tmp/
+    remote_src: yes
+  when: geth_downloaded.stat.exists == False
+
+- name: Copy geth to /usr/local/bin
+  copy:
+    src: /tmp/{{ geth_version }}/geth
+    dest: "{{ geth_path }}"
+    remote_src: yes
+    mode: 0777
