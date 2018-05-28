@@ -1,5 +1,4 @@
 - hosts: genesis
   roles:
     - geth
-    - genesis
   remote_user: root

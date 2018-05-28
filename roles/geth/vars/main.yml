@@ -1,3 +1,7 @@
-geth_version: geth-linux-amd64-1.8.8-2688dab4
-geth_url: https://gethstore.blob.core.windows.net/builds/{{ geth_version }}.tar.gz
+geth_home: /home/geth
+geth_group: geth
 geth_path: /usr/local/bin/geth
+geth_url: https://gethstore.blob.core.windows.net/builds/{{ geth_version }}.tar.gz
+geth_user: geth
+geth_version: geth-linux-amd64-1.8.8-2688dab4
+networkid: 1337

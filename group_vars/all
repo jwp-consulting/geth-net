@@ -1,4 +1,0 @@
----
-geth_user: geth
-geth_group: geth
-networkid: 1337

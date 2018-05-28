@@ -26,3 +26,40 @@
     src: geth.service
     dest: /etc/systemd/system/geth.service
     mode: 0644
+
+- name: Create nonce for genesis block
+  command: openssl rand -hex 8
+  register: nonce
+
+- name: Copy genesis block template
+  template:
+    src: genesis.json
+    dest: /etc/genesis.json
+    owner: geth
+    mode: 0644
+
+- block:
+  - name: Create password
+    shell: openssl rand -hex 64 > {{ geth_home }}/account.key
+    args:
+      creates: "{{ geth_home }}/account.key"
+
+  - name: Create new geth account
+    command: geth account new --password {{ geth_home }}/account.key
+    args:
+      creates: "{{ geth_home }}/.ethereum/geth/keystore"
+
+  - name: Initialize geth database
+    command: geth init /etc/genesis.json
+    args:
+      creates: "{{ geth_home }}/.ethereum/geth/chaindata"
+
+  become: true
+  become_user: geth
+
+- name: Load geth
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: geth.service
+    enabled: yes
