@@ -1,0 +1,5 @@
+---
+- name: Add packages
+  apt:
+    pkg: "{{ item }}"
+  with_items: "{{ apt_packages }}"
