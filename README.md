@@ -19,9 +19,13 @@ For `[::]`, fill in the IP of the other node
 
 Put the nonce and bootnode URL in the hosts file like so
 
-```
+```ini
 [geth_node]
-X.X.X.X nonce={16 hex character} boo
+X.X.X.X
+
+[geth_node:vars]
+nonce=0x{16 hex character}
+alloc_address=0x{ether address}
 ```
 
 Run the playbook
