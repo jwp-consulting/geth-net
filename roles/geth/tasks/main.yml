@@ -43,12 +43,12 @@
   - name: Create new geth account
     command: geth account new --password {{ geth_home }}/account.key
     args:
-      creates: "{{ geth_home }}/.ethereum/keystore"
+      creates: "{{ datadir }}/keystore"
 
   - name: Initialize geth database
     command: geth init /etc/genesis.json
     args:
-      creates: "{{ geth_home }}/.ethereum/geth/chaindata/CURRENT"
+      creates: "{{ datadir }}/geth/chaindata/CURRENT"
 
   become: true
   become_user: geth
