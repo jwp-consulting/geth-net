@@ -1,4 +1,7 @@
 ---
+- name: Set hostname
+  hostname:
+    name: "{{ nodename }}"
 - name: Add packages
   apt:
     pkg: "{{ item }}"

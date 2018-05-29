@@ -17,11 +17,11 @@ journalctl -u geth | grep enode | grep -o -E 'enode://.+discport=0'
 
 For `[::]`, fill in the IP of the other node
 
-Put the nonce and bootnode URL in the hosts file like so
+Put the nonce, nodename and allocation Ethereum address in the hosts file like so
 
 ```ini
 [geth_node]
-X.X.X.X
+X.X.X.X nodename={node name}
 
 [geth_node:vars]
 nonce=0x{16 hex character}

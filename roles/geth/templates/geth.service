@@ -10,7 +10,7 @@ Restart=on-abnormal
 User={{ geth_user }}
 Group={{ geth_group }}
 
-ExecStart={{ geth_path }} --networkid {{ networkid }} --mine --nodiscover --maxpeers 1 --ws --wsorigins * --wsaddr {{ bind_address }} --rpc --rpccorsdomain * --ipcdisable --rpcaddr {{ bind_address }} --verbosity {{ geth_verbosity }} --v5disc
+ExecStart={{ geth_path }} --networkid {{ networkid }} --mine --nodiscover --maxpeers 1 --ws --wsorigins * --wsaddr {{ bind_address }} --rpc --rpccorsdomain * --ipcdisable --rpcaddr {{ bind_address }} --verbosity {{ geth_verbosity }} --v5disc --identity {{ nodename }}
 
 KillMode=mixed
 KillSignal=SIGQUIT
