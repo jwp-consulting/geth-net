@@ -27,10 +27,6 @@
     dest: /etc/systemd/system/geth.service
     mode: 0644
 
-- name: Create nonce for genesis block
-  command: openssl rand -hex 8
-  register: nonce
-
 - name: Copy genesis block template
   template:
     src: genesis.json
