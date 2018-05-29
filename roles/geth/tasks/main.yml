@@ -53,6 +53,11 @@
   become: true
   become_user: geth
 
+- name: Create static node file
+  template:
+    src: static-nodes.json
+    dest: "{{ datadir }}/geth/static-nodes.json"
+
 - name: Load geth
   systemd:
     state: restarted
