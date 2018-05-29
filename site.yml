@@ -1,4 +1,4 @@
-- hosts: genesis
+- hosts: geth_node
   roles:
     - os
     - geth
