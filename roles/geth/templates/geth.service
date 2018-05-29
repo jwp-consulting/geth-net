@@ -10,8 +10,7 @@ Restart=on-abnormal
 User={{ geth_user }}
 Group={{ geth_group }}
 
-ExecStart={{ geth_path }} --networkid {{ networkid }} --mine --nodiscover --maxpeers 0 --ws --wsorigins * --wsapi eth,net,web3 --wsaddr 0.0.0.0 --rpc --rpccorsdomain * --rpcapi eth,net,web3 --ipcdisable --rpcaddr 0.0.0.0
-ExecReload=/bin/kill -USR1 $MAINPID
+ExecStart={{ geth_path }} --networkid {{ networkid }} --mine --nodiscover --maxpeers 1 --ws --wsorigins * --wsaddr {{ bind_address }} --rpc --rpccorsdomain * --ipcdisable --rpcaddr {{ bind_address }} --verbosity {{ geth_verbosity }} --v5disc
 
 KillMode=mixed
 KillSignal=SIGQUIT
