@@ -5,6 +5,6 @@ geth_url: https://gethstore.blob.core.windows.net/builds/{{ geth_version }}.tar.
 geth_user: geth
 geth_version: geth-linux-amd64-1.8.8-2688dab4
 networkid: 50
-geth_verbosity: 5
+geth_verbosity: 3
 datadir: "{{ geth_home }}/.ethereum"
 bind_address: 0.0.0.0
