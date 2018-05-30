@@ -1,5 +1,6 @@
 - hosts: geth_node
   roles:
     - os
+    - caddy
     - geth
   serial: 1

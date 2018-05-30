@@ -1,0 +1,48 @@
+---
+- name: Download caddy
+  unarchive:
+    src: "{{ caddy_url }}"
+    dest: /tmp/
+    creates: /tmp/caddy
+    remote_src: true
+
+- name: Copy caddy
+  copy:
+    src: /tmp/caddy
+    dest: "{{ caddy_path }}"
+    remote_src: true
+    mode: 755
+
+- name: Set caddy capabilities
+  capabilities:
+    path: "{{ caddy_path }}"
+    capability: cap_net_bind_service=+ep
+    state: present
+
+- name: Add caddy user group
+  group:
+    name: "{{ caddy_group }}"
+
+- name: Add caddy user
+  user:
+    name: "{{ caddy_user }}"
+    group: "{{ caddy_group }}"
+
+- name: Copy Caddyfile
+  template:
+    src: Caddyfile
+    dest: "{{ caddyfile_path }}"
+    mode: 0444
+
+- name: Copy Caddy systemd
+  template:
+    src: caddy.service
+    dest: /etc/systemd/system/caddy.service
+    mode: 0444
+
+- name: Load caddy
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: caddy.service
+    enabled: yes

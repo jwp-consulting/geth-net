@@ -1,0 +1,5 @@
+caddy_group: caddy
+caddy_path: /usr/local/bin/caddy
+caddy_url: https://caddyserver.com/download/linux/amd64?license=personal&telemetry=off
+caddy_user: caddy
+caddyfile_path: /etc/Caddyfile
