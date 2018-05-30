@@ -1,0 +1,13 @@
+- hosts: geth_node
+  tasks:
+    - name: Stop geth
+      systemd:
+        state: stopped
+        name: geth.service
+    - name: Delete db
+      command: geth removedb
+      become: "{{ geth_user }}"
+    - name: Start geth
+      systemd:
+        state: started
+        name: geth.service
