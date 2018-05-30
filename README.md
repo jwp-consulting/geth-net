@@ -28,6 +28,7 @@ bootnode=enode://{pubkey}@{ip}:30303?discport=0
 nonce=0x{16 hex character}
 alloc_address=0x{ether address}
 networkid={integer}
+domain={domain for caddy reverse proxy}
 ```
 
 Run the playbook
