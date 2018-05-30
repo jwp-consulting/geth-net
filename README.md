@@ -24,6 +24,7 @@ Put the nonce, nodename and allocation Ethereum address in the hosts file like s
 X.X.X.X nodename={node name}
 
 [geth_node:vars]
+bootnode=enode://{pubkey}@{ip}:30303?discport=0
 nonce=0x{16 hex character}
 alloc_address=0x{ether address}
 networkid={integer}
