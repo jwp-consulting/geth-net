@@ -5,16 +5,18 @@ After=network-online.target
 Wants=network-online.target systemd-networkd-wait-online.service
 
 [Service]
-Restart=on-abnormal
+Restart=on-failure
+
+RestartSec=10s
 
 User={{ geth_user }}
 Group={{ geth_group }}
 
 ExecStart={{ geth_path }} --networkid {{ networkid }} --mine --nodiscover --maxpeers 1 --ws --wsorigins * --wsaddr {{ bind_address }} --rpc --rpccorsdomain * --ipcdisable --rpcaddr {{ bind_address }} --verbosity {{ geth_verbosity }} --v5disc --identity {{ nodename }}
 
-KillMode=mixed
-KillSignal=SIGQUIT
-TimeoutStopSec=5s
+KillMode=process
+KillSignal=SIGINT
+TimeoutStopSec=90s
 
 PrivateTmp=true
 PrivateDevices=true
