@@ -2,3 +2,4 @@
   roles:
     - os
     - geth
+  serial: 1
