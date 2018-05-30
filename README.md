@@ -26,6 +26,7 @@ X.X.X.X nodename={node name}
 [geth_node:vars]
 nonce=0x{16 hex character}
 alloc_address=0x{ether address}
+networkid={integer}
 ```
 
 Run the playbook
