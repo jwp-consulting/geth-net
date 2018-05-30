@@ -1,4 +1,6 @@
 {{ domain }} {
     proxy /rpc localhost:8545
-    proxy /ws localhost:8546
+    proxy /ws localhost:8546 {
+        websocket
+    }
 }
