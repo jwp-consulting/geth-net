@@ -57,7 +57,7 @@
   template:
     src: static-nodes.json
     dest: "{{ datadir }}/geth/static-nodes.json"
-  when: bootnode is defined
+  when: use_bootnode is defined
 
 - name: Load geth
   systemd:
