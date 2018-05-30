@@ -1,0 +1,2 @@
+geth_user: geth
+ansible_user: root

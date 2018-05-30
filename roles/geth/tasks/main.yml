@@ -51,7 +51,7 @@
       creates: "{{ datadir }}/geth/chaindata/CURRENT"
 
   become: true
-  become_user: {{ geth_user }}
+  become_user: "{{ geth_user }}"
 
 - name: Create static node file
   template:

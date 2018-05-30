@@ -2,4 +2,3 @@
   roles:
     - os
     - geth
-  remote_user: root
