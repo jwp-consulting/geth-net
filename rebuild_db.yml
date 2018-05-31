@@ -7,6 +7,10 @@
     - name: Delete db
       command: geth removedb
       become: "{{ geth_user }}"
+    - name: Remove .ethereum
+      file:
+        name: "{{ datadir }}"
+        state: absent
     - name: Start geth
       systemd:
         state: started
