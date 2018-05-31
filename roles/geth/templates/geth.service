@@ -12,7 +12,7 @@ RestartSec=10s
 User={{ geth_user }}
 Group={{ geth_group }}
 
-ExecStart={{ geth_path }} --networkid {{ networkid }} {% if mine is defined %}--mine{% endif %} --nodiscover --maxpeers 1 --ws --wsorigins * --wsaddr {{ bind_address }} --rpc --rpcvhosts * --rpccorsdomain * --rpcaddr {{ bind_address }} --verbosity {{ geth_verbosity | default(3) }} --identity {{ nodename }}
+ExecStart={{ geth_path }} --networkid {{ networkid }} {% if miners is defined %}--mine --minerthreads {{ miners }}{% endif %} --nodiscover --maxpeers 1 --ws --wsorigins * --wsaddr {{ bind_address }} --rpc --rpcvhosts * --rpccorsdomain * --rpcaddr {{ bind_address }} --verbosity {{ geth_verbosity | default(3) }} --identity {{ nodename }}
 
 KillMode=process
 KillSignal=SIGINT
