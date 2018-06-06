@@ -24,6 +24,8 @@ ProtectSystem=full
 
 NoNewPrivileges=true
 
+LimitNOFILE=49152
+
 StandardOutput=syslog
 
 [Install]
