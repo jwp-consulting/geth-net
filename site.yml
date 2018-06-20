@@ -3,4 +3,3 @@
     - os
     - caddy
     - geth
-  serial: 1
