@@ -8,7 +8,6 @@
     autoremove: yes
     update_cache: yes
     upgrade: dist
-    dpkg_options: "Acquire::Check-Valid-Until=false,update"
 
 - name: Add packages
   apt:
