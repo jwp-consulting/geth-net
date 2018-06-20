@@ -1,5 +1,6 @@
 bind_address: 0.0.0.0
 geth_api: debug,eth,net
+geth_gcmode: archive
 geth_group: geth
 geth_path: /usr/local/bin/geth
 geth_url: https://gethstore.blob.core.windows.net/builds/{{ geth_version }}.tar.gz
