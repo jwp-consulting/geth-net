@@ -27,37 +27,12 @@
     dest: /etc/systemd/system/geth.service
     mode: 0644
 
-- name: Copy genesis block template
-  template:
-    src: genesis.json
-    dest: /etc/genesis.json
-    owner: geth
-    mode: 0644
-
-- block:
-  - name: Create password
-    shell: openssl rand -hex 64 > {{ geth_home }}/account.key
-    args:
-      creates: "{{ geth_home }}/account.key"
-
-  - name: Create new geth account
-    command: geth account new --password {{ geth_home }}/account.key
-    args:
-      creates: "{{ datadir }}/keystore"
-
-  - name: Initialize geth database
-    command: geth init /etc/genesis.json
-    args:
-      creates: "{{ datadir }}/geth/chaindata/CURRENT"
-
-  become: true
-  become_user: "{{ geth_user }}"
-
-- name: Create static node file
-  template:
-    src: static-nodes.json
-    dest: "{{ datadir }}/geth/static-nodes.json"
-  when: use_bootnode is defined
+- name: Ensure datadir exists
+  file:
+    path: "{{ datadir }}"
+    state: directory
+    owner: "{{ geth_user }}"
+    group: "{{ geth_group }}"
 
 - name: Load geth
   systemd:

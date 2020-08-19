@@ -1,5 +1,5 @@
 [Unit]
-Description=Go Ethereum Private Network Genesis
+Description=Go Ethereum
 Documentation=https://github.com/ethereum/go-ethereum/wiki
 After=network-online.target
 Wants=network-online.target systemd-networkd-wait-online.service
@@ -12,7 +12,21 @@ RestartSec=10s
 User={{ geth_user }}
 Group={{ geth_group }}
 
-ExecStart={{ geth_path }} --networkid {{ networkid }} {% if miners is defined %}--mine --minerthreads {{ miners }} --etherbase {{ alloc_address }}{% endif %} --nodiscover --maxpeers 1 --ws --wsorigins * --wsaddr {{ bind_address }} --wsapi {{ geth_api }} --rpc --rpcvhosts * --rpccorsdomain * --rpcaddr {{ bind_address }} --rpcapi {{ geth_api }} --verbosity {{ geth_verbosity | default(3) }} --identity {{ nodename }} --targetgaslimit {{ targetgaslimit }} --gcmode {{ geth_gcmode }}
+ExecStart={{ geth_path }} \
+    --syncmode fast \
+    --ws \
+    --wsorigins * \
+    --wsaddr {{ bind_address }} \
+    --wsapi {{ geth_api }} \
+    --rpc \
+    --rpcvhosts * \
+    --rpccorsdomain * \
+    --rpcaddr {{ bind_address }} \
+    --rpcapi {{ geth_api }} \
+    --verbosity {{ geth_verbosity | default(3) }} \
+    --identity {{ nodename }} \
+    --lightserv {{ lightserv_capacity }} \
+    {% if datadir is defined %} --datadir {{ datadir }}{% endif %}
 
 KillMode=process
 KillSignal=SIGINT

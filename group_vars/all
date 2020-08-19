@@ -1,4 +1,3 @@
 geth_user: geth
 ansible_user: root
-geth_home: /home/{{ geth_user }}
 datadir: "{{ geth_home }}/.ethereum"
