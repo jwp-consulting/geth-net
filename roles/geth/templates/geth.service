@@ -14,18 +14,18 @@ Group={{ geth_group }}
 
 ExecStart={{ geth_path }} \
     --syncmode fast \
+    --http \
+    --http.addr {{ bind_address }} \
+    --http.api {{ geth_api }} \
+    --http.corsdomain * \
+    --http.vhosts * \
     --ws \
-    --wsorigins * \
-    --wsaddr {{ bind_address }} \
-    --wsapi {{ geth_api }} \
-    --rpc \
-    --rpcvhosts * \
-    --rpccorsdomain * \
-    --rpcaddr {{ bind_address }} \
-    --rpcapi {{ geth_api }} \
+    --ws.origins * \
+    --ws.addr {{ bind_address }} \
+    --ws.api {{ geth_api }} \
     --verbosity {{ geth_verbosity | default(3) }} \
     --identity {{ nodename }} \
-    --lightserv {{ lightserv_capacity }} \
+    --light.serve {{ lightserv_capacity }} \
     {% if datadir is defined %} --datadir {{ datadir }}{% endif %}
 
 KillMode=process
