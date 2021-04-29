@@ -1,5 +1,5 @@
 - hosts: geth_node
   roles:
-    # - os
-    # - caddy
+    - os
+    - caddy
     - geth

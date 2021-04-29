@@ -1,6 +1,10 @@
 {{ domain }} {
-    proxy /rpc localhost:8545
-    proxy /ws localhost:8546 {
-        websocket
+    route /rpc/ {
+        uri strip_prefix /rpc/
+        reverse_proxy localhost:8545
+    }
+    route /ws/ {
+        uri strip_prefix /ws/
+        reverse_proxy /ws/ localhost:8546
     }
 }

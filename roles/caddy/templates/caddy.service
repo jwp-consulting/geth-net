@@ -10,7 +10,7 @@ User={{ caddy_user }}
 Group={{ caddy_group }}
 
 ; Always set "-root" to something safe in case it gets forgotten in the Caddyfile.
-ExecStart={{ caddy_path }} -log stderr -agree=true -conf={{ caddyfile_path }} -root=/var/tmp
+ExecStart={{ caddy_path }} run --config={{ caddyfile_path }}
 ExecReload=/bin/kill -USR1 $MAINPID
 
 ; Use graceful shutdown with a reasonable timeout

@@ -1,5 +1,5 @@
 caddy_group: caddy
 caddy_path: /usr/local/bin/caddy
-caddy_url: https://caddyserver.com/download/linux/amd64?license=personal&telemetry=off
+caddy_url: https://github.com/caddyserver/caddy/releases/download/v2.3.0/caddy_2.3.0_linux_amd64.tar.gz
 caddy_user: caddy
 caddyfile_path: /etc/Caddyfile
