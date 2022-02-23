@@ -3,5 +3,4 @@ geth_api: debug,eth,net
 geth_group: geth
 geth_path: /usr/local/bin/geth
 geth_url: https://gethstore.blob.core.windows.net/builds/{{ geth_version }}.tar.gz
-geth_version: geth-linux-amd64-1.10.2-97d11b01
-lightserv_capacity: 90
+geth_version: geth-linux-amd64-1.10.16-20356e57

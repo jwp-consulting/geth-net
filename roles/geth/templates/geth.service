@@ -13,7 +13,7 @@ User={{ geth_user }}
 Group={{ geth_group }}
 
 ExecStart={{ geth_path }} \
-    --syncmode fast \
+    --syncmode snap \
     --http \
     --http.addr {{ bind_address }} \
     --http.api {{ geth_api }} \
@@ -25,7 +25,6 @@ ExecStart={{ geth_path }} \
     --ws.api {{ geth_api }} \
     --verbosity {{ geth_verbosity | default(3) }} \
     --identity {{ nodename }} \
-    --light.serve {{ lightserv_capacity }} \
     {% if datadir is defined %} --datadir {{ datadir }}{% endif %}
 
 KillMode=process
